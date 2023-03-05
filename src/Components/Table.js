@@ -1,7 +1,7 @@
 import classes from './Table.module.css';
 import SearchBar from '../UI/SearchBar';
 import { useState, useEffect} from 'react';
-const Table = (props) => {
+const Table = ({ books }) => {
     const [category , setCategory] = useState([]);
     const [option, setOption] = useState(0);
     const [data, setData] = useState([]);
@@ -13,24 +13,22 @@ const Table = (props) => {
         setSearchInput(data);
         console.log(data);
     }
-    useEffect( ()=> {
+    useEffect(()=> {
       const fetchData  = async () => { 
-      const response = await fetch("http://localhost:7000/");
-      let backend = await response.json();
-      backend = backend.data;
+      console.log("Books",books);
       let years = [];
-      for(let ele of backend){
-        if(!years.includes(ele.year)){
+      for (let ele of books) {
+        if (!years.includes(ele.year)) {
           years.push(ele.year);
         }
       }
       console.log(years);
       setCategory(years);
       setOption(0);
-      setData(backend);
+      setData(books);
       }
       fetchData();
-    },[]);
+    },[books]);
 
     return (
       <div className={"container mt-5"}>

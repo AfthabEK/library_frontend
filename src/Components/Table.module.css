@@ -16,6 +16,7 @@ td a:hover{
     background-color: white;
 }
 table{ 
+    margin-left: 5%;
     width: 100%;
     border-collapse: separate;
     border-spacing: 20px;
