@@ -1,0 +1,44 @@
+td{
+    width: 25%;
+}
+
+td a{
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 5px;
+    color:white;
+    text-decoration: none;
+    background-color: #0077b6;
+}
+
+td a:hover{
+    color:#0077b6;
+    background-color: white;
+}
+table{ 
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px;
+    margin-top: 3rem;
+    
+}
+
+.active{
+    border-bottom: 2px solid blue;
+}
+.flex{
+    border-bottom: 1px solid grey;
+    margin-top: 40px;
+}
+
+.flex div{
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+
+.header{
+    text-align: left;
+}
+.table_row{
+    height: 40px;
+}

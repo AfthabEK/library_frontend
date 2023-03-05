@@ -1,0 +1,23 @@
+.footer{
+    background-color:black;
+    padding-top: none;
+    color:white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer h3{
+    margin-bottom: 5px;
+    padding-top:1px;
+    
+}
+
+.logo{
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.mini{
+    height:15px;
+    padding-right: 3px;
+}

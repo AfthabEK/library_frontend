@@ -1,0 +1,36 @@
+
+.video {
+        height: 100%;
+        width:100%
+        
+    }
+
+@media (max-width:1200px) {
+    .video{
+            height:100%;
+            width: auto;
+            
+    }
+}
+.parent::after{
+    content: "Welcome to Central Library";
+    position: absolute;
+    top: 60%;
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+    padding-left: 10px;
+    mix-blend-mode: hard-light;
+    text-align: left;
+}
+/* .overlay {
+    position: absolute;
+    top: 50%;
+    height: 100%;
+    padding-left: none;
+} */
+
+/* .overlay h1:nth-of-type(1) {
+    padding-top: 30%;
+} */
+

@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media(max-width: 1480px) and (min-width: 1200px){
+  .nav-link{
+    font-size: 1vw;
+  }
+}
+
+.logo {
+      height: 42px;
+      padding-right: 20px;
+    }
+
+
+
+
+
+@media(min-width: 1200px){
+    .navbar-brand {
+      padding-left: 30px;
+    }
+.active {
+      border-bottom: 2px solid black;
+    }
+    .navstyle {
+      margin-left: 35%;
+    }
+}
