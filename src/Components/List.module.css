@@ -14,11 +14,12 @@
     width:250px;
     margin-left: 1.5rem;
     margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     text-align: center;
     color:black;
     border-radius: 20px;
-    border: 2px solid grey;
     text-decoration: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .holder{

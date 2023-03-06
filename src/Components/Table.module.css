@@ -15,6 +15,10 @@ td a:hover{
     color:#0077b6;
     background-color: white;
 }
+
+.list{
+    margin-bottom: 6rem;
+}
 table{ 
     margin-left: 5%;
     width: 100%;

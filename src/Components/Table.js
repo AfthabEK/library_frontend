@@ -36,7 +36,7 @@ const Table = ({ books }) => {
     },[books]);
 
     return (
-      <div className={"container mt-5"}>
+      <div className={"container mt-5 " + classes.list} >
         <h2 className={classes.header}>{publisher} Books</h2>
         <SearchBar filter={filterInput} />
         {category && (
