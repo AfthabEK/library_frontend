@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter} from "react-router-dom";
 import RootLayout from './pages/Root';
 import HomePage from './pages/HomePage';
 import Ebooks, { loader as EbooksLoader} from "./pages/Ebooks";
-
+import PublisherList, { loader as PublisherLoader} from './pages/PublisherList';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -24,22 +24,38 @@ import ErrorPage from './pages/Error';
 
 const router = createBrowserRouter([
   {
-    path:"/",
-    element: <RootLayout/>,
-    errorElement: <ErrorPage/>,
-    children: [{
-      index: true,
-      element: <HomePage/>,
-    },
+    path: "/",
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
       {
-        path:"ebooks",
-        element:<Ebooks/>,
-        loader:EbooksLoader,
-
-      }
-  ]
-  }
-])
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "ebooks",
+        children: [
+          {
+            index: true,
+            element: <PublisherList />,
+            loader: PublisherLoader,
+          },
+          {
+            path: ":publisher",
+            id: "publisher-detail",
+            loader: EbooksLoader,
+            children: [
+              {
+                index: true,
+                element: <Ebooks />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+]);
 
 function App(){
   return <RouterProvider router={router}/>

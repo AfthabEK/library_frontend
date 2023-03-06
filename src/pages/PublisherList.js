@@ -1,32 +1,24 @@
 import { Suspense } from "react";
-import { json, useRouteLoaderData ,defer, Await } from "react-router-dom";
+import { json, useLoaderData, defer, Await } from "react-router-dom";
 
-import Table from '../Components/Table';
+import List from "../Components/List";
 
-function Ebooks() {
-  const { books } = useRouteLoaderData("publisher-detail");
-  console.log("Object", books);
+function PublisherList() {
+  const { publishers } = useLoaderData();
+
   return (
     <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
-      <Await resolve={books}>
-        {(loadedBooks) => < Table books={loadedBooks} />}
+      <Await resolve={publishers}>
+        {(loadedPublishers) => <List publishers={loadedPublishers} />}
       </Await>
     </Suspense>
   );
 }
 
-export default Ebooks;
+export default PublisherList;
 
-export async function loader({ request, params }) {
-  const id = params.publisher;
-
-  return defer({
-    books: await loadBooks(id),
-  });
-}
-
-async function loadBooks(id) {
-  const response = await fetch("http://localhost:7000/ebooks/" + id);
+async function loadPublisher() {
+  const response = await fetch("http://localhost:7000/ebooks");
   if (!response.ok) {
     // return {isError: true, message: "Could not fetch result!"};
     // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
@@ -44,5 +36,8 @@ async function loadBooks(id) {
     return resData.data;
   }
 }
-
-
+export function loader() {
+  return defer({
+    publishers: loadPublisher(),
+  });
+}

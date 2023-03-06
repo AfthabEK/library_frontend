@@ -1,16 +1,25 @@
+import { Link } from 'react-router-dom';
+import classes from './List.module.css';
+
+const List = ({ publishers }) => {
 
 
-const List = (props) => {
-    let arr = [];
-    for(let i = 0; i < 50; i++)
-        arr.push(i);
-
-    return <>
-        {arr.map((ele)=> <div>
-            <img src="https://library.nitc.ac.in/img/jlogos/pearsonebooks.jpg"/>
-            {ele}
-        </div>)}
-    </>
+    return (
+      <>
+        <div className={"container " + classes.box}>
+          {publishers.map((ele) => (
+            <Link to={`/ebooks/${ele.publisher_id}`} style={{ textDecoration: 'none' }}>
+              <div className={classes.item}>
+                <div className={classes.holder}>
+                  <img className="img-fluid" alt="text" src={ele.img} />
+                </div>
+                {ele.name}
+              </div>
+            </Link>
+          ))}
+        </div>
+      </>
+    );
 }
 
 export default List;

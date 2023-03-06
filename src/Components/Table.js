@@ -6,33 +6,38 @@ const Table = ({ books }) => {
     const [option, setOption] = useState(0);
     const [data, setData] = useState([]);
     const [searchInput , setSearchInput] = useState("");
+    const [publisher, setPublisher] = useState("");
     const categoryHandler = (id) => {
         setOption(id);
     }
+
     const filterInput = (data) => {
         setSearchInput(data);
         console.log(data);
     }
     useEffect(()=> {
       const fetchData  = async () => { 
-      console.log("Books",books);
+      // console.log("Books",books);
       let years = [];
+      
       for (let ele of books) {
         if (!years.includes(ele.year)) {
           years.push(ele.year);
+          
         }
       }
       console.log(years);
       setCategory(years);
       setOption(0);
       setData(books);
+      setPublisher(books[0].publisher);
       }
       fetchData();
     },[books]);
 
     return (
       <div className={"container mt-5"}>
-        <h2 className={classes.header}>Wiley Books</h2>
+        <h2 className={classes.header}>{publisher} Books</h2>
         <SearchBar filter={filterInput} />
         {category && (
           <div className={"d-flex flex-row mb-3 " + classes.flex}>
