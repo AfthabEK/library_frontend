@@ -5,6 +5,7 @@ import RootLayout from './pages/Root';
 import HomePage from './pages/HomePage';
 import Ebooks, { loader as EbooksLoader} from "./pages/Ebooks";
 import PublisherList, { loader as PublisherLoader} from './pages/PublisherList';
+import JournalPublishers, { loader as JournalPublisherLoader } from './pages/JournalPublishers';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -53,6 +54,16 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "ojournals",
+        children: [
+          {
+            index: true,
+            element: <JournalPublishers />,
+            loader: JournalPublisherLoader,
+          },
+        ]
+      }
     ],
   },
 ]);

@@ -1,25 +1,31 @@
 import { Suspense } from "react";
 import { json, useLoaderData, defer, Await } from "react-router-dom";
 
-import EbooksList from "../Components/EbooksList";
+import JournalsList from "../Components/JournalsList";
 
-function PublisherList() {
-  const { list } = useLoaderData();
+function JournalPublishers() {
+  const { publishers } = useLoaderData();
+  console.log("Publishers", publishers);
   return (
     <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
-      <Await resolve={list}>
-        {(loadedList) => (
-          <EbooksList publishers={loadedList.data} links={loadedList.links} />
+      <Await resolve={publishers}>
+        {(loadedPublishers) => (
+          <JournalsList
+            subscribers={loadedPublishers.sub}
+            slinks={loadedPublishers.slinks}
+            elinks={loadedPublishers.elinks}
+            eshodh={loadedPublishers.eshodh}
+          />
         )}
       </Await>
     </Suspense>
   );
 }
 
-export default PublisherList;
+export default JournalPublishers;
 
-async function loadPublisher() {
-  const response = await fetch("http://localhost:7000/ebooks");
+async function loadOJournals() {
+  const response = await fetch("http://localhost:7000/ojournals");
   if (!response.ok) {
     // return {isError: true, message: "Could not fetch result!"};
     // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
@@ -37,8 +43,8 @@ async function loadPublisher() {
     return resData;
   }
 }
-export function loader() {
+export async function loader() {
   return defer({
-    list: loadPublisher(),
+    publishers: await loadOJournals(),
   });
 }

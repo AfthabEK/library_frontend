@@ -20,12 +20,17 @@ const Table = ({ books }) => {
       // console.log("Books",books);
       let years = [];
       
+      if(typeof books[0].year === 'undefined'){
+        years.append("OTHER")
+      }
+      else{
       for (let ele of books) {
         if (!years.includes(ele.year)) {
           years.push(ele.year);
           
         }
       }
+    }
       console.log(years);
       setCategory(years);
       setOption(0);
@@ -69,7 +74,7 @@ const Table = ({ books }) => {
                 <tr className={classes.table_row}>
                   <td>{ele.publisher}</td>
                   <td>{ele.title}</td>
-                  <td>{ele.author}</td>
+                  <td>{typeof ele.author === "undefined" ? "-": ele.author}</td>
                   <td><a href={ele.link}>Go to link</a></td>
                 </tr>
               ))}
