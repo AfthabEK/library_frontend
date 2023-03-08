@@ -1,11 +1,9 @@
 import List from "./List";
 import classes from "./EbooksList.module.css";
-import { useState } from "react";
 
 
 const EbooksList = ({ subscribers, slinks, eshodh, elinks }) => {
 
-const [option, setOption] = useState(true);
 
   return (
     <>
