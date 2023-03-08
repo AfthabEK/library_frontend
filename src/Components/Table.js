@@ -13,27 +13,25 @@ const Table = ({ books }) => {
 
     const filterInput = (data) => {
         setSearchInput(data);
-        console.log(data);
+        // console.log(data);
     }
     useEffect(()=> {
       const fetchData  = async () => { 
       // console.log("Books",books);
       let years = [];
-      
-      if(typeof books[0].year === 'undefined'){
-        years.append("OTHER")
-      }
-      else{
+      years.push("OTHER");
+      if(books[0].year !== undefined){
       for (let ele of books) {
         if (!years.includes(ele.year)) {
           years.push(ele.year);
           
         }
       }
-    }
+      }
       console.log(years);
       setCategory(years);
       setOption(0);
+      console.log(books);
       setData(books);
       setPublisher(books[0].publisher);
       }

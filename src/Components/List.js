@@ -8,7 +8,7 @@ const List = (props) => {
       <div className={classes.box}>
         {publishers.map((ele) => (
           <Link
-            to={ ele.link === "" ? `/ebooks/${ele.publisher_id}`: ele.link}
+            to={ ele.link === "" ? `${ele.publisher_id}`: ele.link}
             style={{ textDecoration: "none" }}
           >
             <div className={classes.item}>
