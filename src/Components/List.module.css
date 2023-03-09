@@ -20,8 +20,14 @@
     border-radius: 20px;
     text-decoration: none;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all 0.3s ease-in-out;
 }
 
+.item:hover{
+    cursor:pointer;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
 .holder{
     min-height: 250px;
 }

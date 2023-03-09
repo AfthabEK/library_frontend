@@ -7,6 +7,7 @@ import Ebooks, { loader as EbooksLoader} from "./pages/Ebooks";
 import PublisherList, { loader as PublisherLoader} from './pages/PublisherList';
 import JournalPublishers, { loader as JournalPublisherLoader } from './pages/JournalPublishers';
 import OJournals, { loader as OnlineJournalsLoader } from "./pages/OJournals";
+import PJournals, {loader as PJournalsLoader} from './pages/PJournals';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -73,6 +74,16 @@ const router = createBrowserRouter([
                 element: <OJournals />,
               },
             ],
+          },
+        ],
+      },
+      {
+        path: "pjournals",
+        children: [
+          {
+            index: true,
+            element: <PJournals />,
+            loader: PJournalsLoader,
           },
         ],
       },

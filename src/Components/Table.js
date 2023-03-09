@@ -19,7 +19,6 @@ const Table = ({ books }) => {
       const fetchData  = async () => { 
       // console.log("Books",books);
       let years = [];
-      years.push("OTHER");
       if(books[0].year !== undefined){
       for (let ele of books) {
         if (!years.includes(ele.year)) {
@@ -27,6 +26,8 @@ const Table = ({ books }) => {
           
         }
       }
+      } else{
+        years.push("OTHER")
       }
       console.log(years);
       setCategory(years);

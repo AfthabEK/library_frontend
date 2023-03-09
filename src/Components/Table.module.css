@@ -4,11 +4,12 @@ td{
 
 td a{
     border-radius: 25px;
-    border: 1px solid black;
-    padding: 5px;
+    padding: 10px;
     color:white;
+    font-weight: bold;
     text-decoration: none;
     background-color: #0077b6;
+    transition: 1s all;
 }
 
 td a:hover{
