@@ -8,6 +8,7 @@ import PublisherList, { loader as PublisherLoader} from './pages/PublisherList';
 import JournalPublishers, { loader as JournalPublisherLoader } from './pages/JournalPublishers';
 import OJournals, { loader as OnlineJournalsLoader } from "./pages/OJournals";
 import PJournals, {loader as PJournalsLoader} from './pages/PJournals';
+import DailiesAndMagazines, {loader as DailiesLoader } from './pages/DailyMagazines';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -84,6 +85,16 @@ const router = createBrowserRouter([
             index: true,
             element: <PJournals />,
             loader: PJournalsLoader,
+          },
+        ],
+      },
+      {
+        path: "dailies",
+        children: [
+          {
+            index: true,
+            element: <DailiesAndMagazines />,
+            loader: DailiesLoader,
           },
         ],
       },
