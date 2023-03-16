@@ -1,0 +1,13 @@
+
+.panel{
+    margin: 5rem auto;
+    background-color: #14213d;
+    color:white;
+    border-radius: 25px;
+    padding: 50px;
+}
+
+.header{
+    padding:10px;
+    text-transform: capitalize;
+}

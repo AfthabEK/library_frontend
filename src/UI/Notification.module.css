@@ -1,0 +1,17 @@
+.item{
+    width: 30%;
+    margin-left: 2.5rem;
+    margin-top: 1rem;
+    border: 1px solid white;
+    padding: 10px;
+}
+
+.item h4{
+    cursor: pointer;
+}
+@media(max-width:800px) {
+    .item {
+        width: 100%;
+        margin: auto 0;
+    }
+}
