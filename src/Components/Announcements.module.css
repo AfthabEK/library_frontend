@@ -43,3 +43,7 @@
         text-align: center;
     }
 }
+
+.border{
+    border-bottom: 2px solid black;
+}

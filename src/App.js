@@ -9,6 +9,7 @@ import JournalPublishers, { loader as JournalPublisherLoader } from './pages/Jou
 import OJournals, { loader as OnlineJournalsLoader } from "./pages/OJournals";
 import PJournals, {loader as PJournalsLoader} from './pages/PJournals';
 import DailiesAndMagazines, {loader as DailiesLoader } from './pages/DailyMagazines';
+import {loader as AnnouncementsLoader} from './pages/NotificationPage';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -35,6 +36,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />,
+        loader: AnnouncementsLoader,
       },
       {
         path: "ebooks",

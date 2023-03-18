@@ -1,12 +1,12 @@
 import Video from '../Components/Video';
-import NotificationPanel from "../Components/NotificationPanel";
+import NotificationPage from './NotificationPage';
 function HomePage(){
     return (
-        <>
-        <Video/>
-        <NotificationPanel/>
-        </>
-    )
+      <>
+        <Video />
+        <NotificationPage />
+      </>
+    );
 };
 
 export default HomePage;
