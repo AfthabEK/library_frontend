@@ -10,11 +10,13 @@ import OJournals, { loader as OnlineJournalsLoader } from "./pages/OJournals";
 import PJournals, {loader as PJournalsLoader} from './pages/PJournals';
 import DailiesAndMagazines, {loader as DailiesLoader } from './pages/DailyMagazines';
 import {loader as AnnouncementsLoader} from './pages/NotificationPage';
+import { NewEbook,loader as NewEbookLoader } from './Components/NewEbook';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
 
 import ErrorPage from './pages/Error';
+
 // function App() {
 //   return (
 //     <>
@@ -100,6 +102,22 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path:"admin",
+        children:[
+          {
+            path:"new-ebook",
+            children:[
+              {
+                index:true,
+                id:'ebooks-form',
+                element:<NewEbook />,
+                loader:NewEbookLoader,
+              }
+            ]
+          }
+        ]
+      }
     ],
   },
 ]);
