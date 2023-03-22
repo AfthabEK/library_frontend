@@ -3,17 +3,27 @@ import Form from 'react-bootstrap/Form';
 import { json, useRouteLoaderData ,defer} from "react-router-dom";
 import {useNavigate,useNavigation,useActionData,redirect} from 'react-router-dom';
 import { NewEbookForm } from '../Components/NewEbookForm';
+import {NewEbookExcelForm} from '../Components/NewEbookExcel';
 import {useState} from 'react';
 
-export const NewEbook=()=>{
+export const NewEbook=(props)=>{
     const { publishers } = useRouteLoaderData("ebooks-form");
-    console.log("Object", publishers);
     return <>
         <div>
             <h4>Register New Ebook</h4>
             <NewEbookForm publishers={publishers}/>
         </div>
     </>
+}
+
+export const NewEbookExcel=(props)=>{
+  const { publishers } = useRouteLoaderData("ebooks-form-excel");
+  return <>
+      <div>
+          <h4>Register New Ebook</h4>
+          <NewEbookExcelForm publishers={publishers}/>
+      </div>
+  </>
 }
 
 export async function loader({ request, params }) {

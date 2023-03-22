@@ -38,7 +38,7 @@ const Footer = () => {
         <div>Digital Library</div>
       </div>
       <div className="col-sm mx-2">
-        <img src="../nitc.png" alt="nitc logo" className={classes.logo} />
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/This_is_the_logo_of_NIT_Calicut.svg/1200px-This_is_the_logo_of_NIT_Calicut.svg.png" alt="nitc logo" className={classes.logo} />
         <div>NIT Calicut</div>
         <div>NIT Campus PO</div>
         <div>Kozhikode, Kerala</div>

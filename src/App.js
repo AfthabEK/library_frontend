@@ -10,7 +10,7 @@ import OJournals, { loader as OnlineJournalsLoader } from "./pages/OJournals";
 import PJournals, {loader as PJournalsLoader} from './pages/PJournals';
 import DailiesAndMagazines, {loader as DailiesLoader } from './pages/DailyMagazines';
 import {loader as AnnouncementsLoader} from './pages/NotificationPage';
-import { NewEbook,loader as NewEbookLoader } from './Components/NewEbook';
+import { NewEbook,loader as NewEbookLoader, NewEbookExcel } from '../src/pages/NewEbook';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -111,7 +111,13 @@ const router = createBrowserRouter([
               {
                 index:true,
                 id:'ebooks-form',
-                element:<NewEbook />,
+                element:<NewEbook val={"Individual"} id={1}/>,
+                loader:NewEbookLoader,
+              },
+              {
+                path:"excel",
+                id:'ebooks-form-excel',
+                element:<NewEbookExcel />,
                 loader:NewEbookLoader,
               }
             ]
