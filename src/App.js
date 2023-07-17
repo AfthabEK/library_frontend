@@ -11,6 +11,7 @@ import PJournals, {loader as PJournalsLoader} from './pages/PJournals';
 import DailiesAndMagazines, {loader as DailiesLoader } from './pages/DailyMagazines';
 import {loader as AnnouncementsLoader} from './pages/NotificationPage';
 import { NewEbook,loader as NewEbookLoader, NewEbookExcel } from '../src/pages/NewEbook';
+import { EditEbook } from './pages/EditEbook';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
                 index: true,
                 element: <Ebooks />,
               },
+              {
+                path:":ebook_id",
+                index:true,
+                element:<EditEbook />,
+              }
             ],
           },
         ],
