@@ -17,6 +17,8 @@ import { EditOnlineJournal } from './pages/EditOnlineJournal';
 import { NewOnlineJournalExcel } from './pages/NewOnlineJournalExcel';
 import { NewPublisher } from './pages/NewPublisher';
 import LoginPage from './Components/LoginPage';
+import { Announcements } from './pages/Announcements';
+import { NewAnnouncement } from './pages/NewAnnouncment';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -171,6 +173,24 @@ const router = createBrowserRouter([
             index: true,
             element: <NewPublisher />,
           },
+        ]
+      },
+      {
+        path:"announcements",
+        children:[
+          {
+            index:true,
+            element:<Announcements />
+          },
+          {
+            path:'new',
+            children:[
+              {
+                index:true,
+                element:<NewAnnouncement />
+              },
+            ]
+          }
         ]
       }
     ],
