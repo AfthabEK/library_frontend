@@ -4,11 +4,10 @@ import { json, useRouteLoaderData ,defer} from "react-router-dom";
 import {useNavigate,useNavigation,useActionData,redirect,useParams} from 'react-router-dom';
 import {useState,useEffect} from 'react';
 
-export const EditEbook=(props)=>{
-    const { publisher,ebook_id} = useParams();
+export const EditOnlineJournal=(props)=>{
+    const { publisher_id,journal_id} = useParams();
     const [title,setTitle]=useState("");
-    const [publisherData,setPublisher]=useState("Wiley");
-    const [author,setAuthor]=useState("");
+    const [publisherData,setPublisher]=useState("ACM");
     const [link,setLink]=useState("");
     let [publisherList,setPublisherList]=useState([])
     const navigate = useNavigate();
@@ -17,7 +16,7 @@ export const EditEbook=(props)=>{
     useEffect(() => {
         // Function to make the GET request
         const handlePublishersList= async()=>{
-            const response = await fetch("http://localhost:7000/publishers/" );
+            const response = await fetch("http://localhost:7000/online-publishers/" );
             if (!response.ok) {
                 // return {isError: true, message: "Could not fetch result!"};
                 // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
@@ -38,7 +37,8 @@ export const EditEbook=(props)=>{
         }
 
         const getEditValues=async()=>{
-            const response = await fetch(`http://localhost:7000/ebooks/${publisher}/${ebook_id}` );
+            console.log(`http://localhost:7000/ojournals/${publisher_id}/${journal_id}` )
+            const response = await fetch(`http://localhost:7000/ojournal/${publisher_id}/${journal_id}` );
             if (!response.ok) {
                 // return {isError: true, message: "Could not fetch result!"};
                 // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
@@ -54,7 +54,6 @@ export const EditEbook=(props)=>{
             } else {
                 const resData = await response.json();
                 setTitle(resData.data.title)
-                setAuthor(resData.data.author)
                 setLink(resData.data.link)
             }
         }
@@ -70,7 +69,7 @@ export const EditEbook=(props)=>{
     let handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        let res = await fetch(`http://localhost:7000/ebooks/${publisher}/${ebook_id}`, {
+        let res = await fetch(`http://localhost:7000/ojournals/${publisher_id}/${journal_id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -79,7 +78,6 @@ export const EditEbook=(props)=>{
             title,
             link,
             publisherData,
-            author
           }),
           redirect: 'follow'
         });
@@ -93,6 +91,7 @@ export const EditEbook=(props)=>{
     };
     
     return (<>
+        <h1>Edit Online Journal</h1>
         <Form onSubmit={handleSubmit} className="p-4">
             <Form.Group className="mb-3 " controlId="formBasicEmail" >
                 <Form.Label>Title Of Book</Form.Label>
@@ -106,11 +105,6 @@ export const EditEbook=(props)=>{
                     })
                 }
             </Form.Select>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Name of Author</Form.Label>
-                <Form.Control required type="text" value={author} placeholder="Enter Name of Author" name="author" onChange={(e)=>setAuthor(e.target.value)}/>
-                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-            </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Link</Form.Label>
                 <Form.Control required type="text" value={link} placeholder="Enter Link Of the Book" name="link" onChange={(e)=>setLink(e.target.value)}/>

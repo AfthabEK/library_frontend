@@ -12,6 +12,8 @@ import DailiesAndMagazines, {loader as DailiesLoader } from './pages/DailyMagazi
 import {loader as AnnouncementsLoader} from './pages/NotificationPage';
 import { NewEbook,loader as NewEbookLoader, NewEbookExcel } from '../src/pages/NewEbook';
 import { EditEbook } from './pages/EditEbook';
+import { NewOnlineJournal } from './pages/NewOnlineJounal';
+import { EditOnlineJournal } from './pages/EditOnlineJournal';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -84,6 +86,11 @@ const router = createBrowserRouter([
                 index: true,
                 element: <OJournals />,
               },
+              {
+                path:":journal_id",
+                index:true,
+                element:<EditOnlineJournal />,
+              }
             ],
           },
         ],
@@ -129,6 +136,16 @@ const router = createBrowserRouter([
             ]
           }
         ]
+      },
+      {
+        path:"/new-ojournal",
+        children: [
+          {
+            index: true,
+            element: <NewOnlineJournal />,
+            loader: DailiesLoader,
+          },
+        ],
       }
     ],
   },
