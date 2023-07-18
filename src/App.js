@@ -15,6 +15,7 @@ import { EditEbook } from './pages/EditEbook';
 import { NewOnlineJournal } from './pages/NewOnlineJounal';
 import { EditOnlineJournal } from './pages/EditOnlineJournal';
 import { NewOnlineJournalExcel } from './pages/NewOnlineJournalExcel';
+import { NewPublisher } from './pages/NewPublisher';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -152,6 +153,15 @@ const router = createBrowserRouter([
             element:<NewOnlineJournalExcel />,
           }
         ],
+      },
+      {
+        path:"/new-publisher",
+        children: [
+          {
+            index: true,
+            element: <NewPublisher />,
+          },
+        ]
       }
     ],
   },
