@@ -14,6 +14,7 @@ import { NewEbook,loader as NewEbookLoader, NewEbookExcel } from '../src/pages/N
 import { EditEbook } from './pages/EditEbook';
 import { NewOnlineJournal } from './pages/NewOnlineJounal';
 import { EditOnlineJournal } from './pages/EditOnlineJournal';
+import { NewOnlineJournalExcel } from './pages/NewOnlineJournalExcel';
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -145,6 +146,11 @@ const router = createBrowserRouter([
             element: <NewOnlineJournal />,
             loader: DailiesLoader,
           },
+          {
+            path:"excel",
+            id:'ojournal-form-excel',
+            element:<NewOnlineJournalExcel />,
+          }
         ],
       }
     ],

@@ -45,6 +45,7 @@ export const EditOnlineJournal=(props)=>{
                 //   status: 500,
                 // });
                 console.log("Error!");
+                navigate('/ebooks');
                 return json(
                 { message: "Could not fetch events." },
                 {
