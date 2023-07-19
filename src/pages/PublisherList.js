@@ -1,10 +1,13 @@
 import { Suspense } from "react";
 import { json, useLoaderData, defer, Await } from "react-router-dom";
-
+import { selectAuth } from "../Feature/authSlice";
 import EbooksList from "../Components/EbooksList";
+import { useSelector } from "react-redux";
 
 function PublisherList() {
   const { list } = useLoaderData();
+  const auth = useSelector(selectAuth);
+  console.log(auth);
   return (
     <Suspense fallback={<p style={{ textAlign: "center" }}>Loading...</p>}>
       <Await resolve={list}>
