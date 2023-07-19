@@ -5,40 +5,16 @@ import classes from "./LoginPage.module.scss";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useFormik } from "formik";
 import loginValidation from "../validation/loginValidation";
-
+import { setAuth, selectAuth } from "../Feature/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 const LoginPage = (props) => {
   const location = useLocation();
-  const { setAuth } = useAuth();
   const navigate = useNavigate();
   const [ptype, setPtype] = useState("password");
-  const [pwicon, setPwicon] = useState(<FaEye />);
   const [error, setError] = useState("");
-
+  const auth = useSelector(selectAuth);
   const from = location.state?.from?.pathname || "/";
-  const authenticateHandler = async (e) => {
-    e.preventDefault();
-    let object = {};
-    const url = "http://localhost:7000/login";
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(object),
-    });
-
-    if (response.status === 422) {
-      formik.resetForm();
-      return setError("The entered credentials is incorrect.");
-    }
-    if (!response.ok) {
-      formik.resetForm();
-      return setError("The database cannot be accessed now. Try again!");
-    }
-    const result = await response.json();
-    setAuth({ user: "admin" });
-    navigate(from, { replace: true });
-  };
+  const dispatch = useDispatch();
 
   //formik is a library used for login validation pls ignore
   const formik = useFormik({
@@ -70,14 +46,15 @@ const LoginPage = (props) => {
         formik.resetForm();
         return setError("The database cannot be accessed now. Try again!");
       }
+      dispatch(setAuth(true));
       const result = await response.json();
-      setAuth({ user: "admin" });
-      navigate(from, { replace: true });
+      navigate("/");
     },
   });
   const { errors, values, handleChange, handleBlur, handleSubmit } = formik;
   const usernameError = errors.username && formik.touched.username;
   const passwordError = errors.password && formik.touched.password;
+  console.log(auth);
   return (
     <div className={classes.login}>
       <div className={classes.maincard}>
