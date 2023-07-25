@@ -19,6 +19,7 @@ import { NewPublisher } from './pages/NewPublisher';
 import LoginPage from './Components/LoginPage';
 import { Announcements } from './pages/Announcements';
 import { NewAnnouncement } from './pages/NewAnnouncment';
+import {EditAnnouncement} from './pages/EditAnnouncement'
 // import Footer from './Components/Footer';
 // import Table from './Components/Table';
 // import Content from './UI/Content';
@@ -188,6 +189,15 @@ const router = createBrowserRouter([
               {
                 index:true,
                 element:<NewAnnouncement />
+              },
+            ]
+          },
+          {
+            path:':id',
+            children:[
+              {
+                index:true,
+                element:<EditAnnouncement />
               },
             ]
           }

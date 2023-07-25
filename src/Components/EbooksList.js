@@ -15,7 +15,7 @@ const EbooksList = ({ publishers, links }) => {
               <div className="col-2 mt-4">
                 {auth && (
                   <Link
-                    href="/new-publisher"
+                    to="/new-publisher"
                     style={{ textDecoration: "none" }}
                   >
                     <Buttons text="Add Publisher" />
