@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { json, useRouteLoaderData ,defer} from "react-router-dom";
 import {useNavigate,useNavigation,useActionData,redirect,useParams} from 'react-router-dom';
 import {useState,useEffect} from 'react';
+import { backendHost } from '../Config';
 
 export const EditEbook=(props)=>{
     const { publisher,ebook_id} = useParams();
@@ -17,7 +18,7 @@ export const EditEbook=(props)=>{
     useEffect(() => {
         // Function to make the GET request
         const handlePublishersList= async()=>{
-            const response = await fetch("http://localhost:7000/publishers/" );
+            const response = await fetch(`http://${backendHost}/publishers/` );
             if (!response.ok) {
                 // return {isError: true, message: "Could not fetch result!"};
                 // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
@@ -38,7 +39,7 @@ export const EditEbook=(props)=>{
         }
 
         const getEditValues=async()=>{
-            const response = await fetch(`http://localhost:7000/ebooks/${publisher}/${ebook_id}` );
+            const response = await fetch(`http://${backendHost}/ebooks/${publisher}/${ebook_id}` );
             if (!response.ok) {
                 // return {isError: true, message: "Could not fetch result!"};
                 // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
@@ -70,7 +71,7 @@ export const EditEbook=(props)=>{
     let handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        let res = await fetch(`http://localhost:7000/ebooks/${publisher}/${ebook_id}`, {
+        let res = await fetch(`http://${backendHost}/ebooks/${publisher}/${ebook_id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"

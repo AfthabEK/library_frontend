@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
-
+import { backendHost } from "../Config";
 
 
 const NewEbookExcelForm= (props) => {
@@ -60,7 +60,7 @@ const NewEbookExcelForm= (props) => {
         e.preventDefault();
         if(ebooks!==[]){
                 try {
-                    let res = await fetch("http://localhost:7000/multiple-new-ebook", {
+                    let res = await fetch(`http://${backendHost}/multiple-new-ebook`, {
                       method: "POST",
                       headers: {
                         "Content-Type": "application/json"

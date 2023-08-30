@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { json, useLoaderData, defer, Await } from "react-router-dom";
+import { backendHost } from "../Config";
 
 import Dailies from "../Components/Dailies";
 
@@ -18,7 +19,7 @@ function DailiesAndMagazines() {
 export default DailiesAndMagazines;
 
 async function loadDailies() {
-  const response = await fetch("http://localhost:7000/dailies");
+  const response = await fetch(`http://${backendHost}/dailies`);
   if (!response.ok) {
     // return {isError: true, message: "Could not fetch result!"};
     // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {

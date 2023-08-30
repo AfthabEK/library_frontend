@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { redirect } from 'next/dist/server/api-utils';
-
+import { backendHost } from '../Config';
 
 export const NewEbookForm=(props)=>{
     const [title,setTitle]=useState("");
@@ -15,7 +15,7 @@ export const NewEbookForm=(props)=>{
     let handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        let res = await fetch("http://localhost:7000/new-ebook/", {
+        let res = await fetch(`http://${backendHost}/new-ebook/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

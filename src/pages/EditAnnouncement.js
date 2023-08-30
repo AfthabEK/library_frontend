@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { json, useRouteLoaderData, defer } from 'react-router-dom';
 import { useNavigate, useNavigation, useActionData, redirect, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { backendHost } from '../Config';
 
 export const EditAnnouncement = (props) => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ export const EditAnnouncement = (props) => {
   useEffect(() => {
     // Function to make the GET request
     const getEditValues = async () => {
-      const response = await fetch(`http://localhost:7000/announcements/${id}`);
+      const response = await fetch(`http://${backendHost}/announcements/${id}`);
       if (!response.ok) {
         console.log('Error!');
         return json(
@@ -37,7 +38,7 @@ export const EditAnnouncement = (props) => {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let res = await fetch(`http://localhost:7000/announcements/${id}`, {
+      let res = await fetch(`http://${backendHost}/announcements/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

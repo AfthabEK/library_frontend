@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import loginValidation from "../validation/loginValidation";
 import { setAuth, selectAuth } from "../Feature/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { backendHost } from "../Config";
 const LoginPage = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ const LoginPage = (props) => {
         password: values.password,
       };
       console.log(object, "object");
-      const url = "http://localhost:7000/login";
+      const url = `http://${backendHost}/login`;
       const response = await fetch(url, {
         method: "POST",
         headers: {

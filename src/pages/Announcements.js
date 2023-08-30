@@ -3,6 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Buttons from "../UI/Buttons";
 import { Link } from "react-router-dom";
+import { backendHost } from '../Config';
 
 export const Announcements = () => {
   const [announcements, setAnnouncements] = useState([]);
@@ -11,7 +12,7 @@ export const Announcements = () => {
   useEffect(() => {
     const getAnnouncementsList = async () => {
       try {
-        const response = await fetch("http://localhost:7000/announcements/");
+        const response = await fetch(`http://${backendHost}/announcements/`);
         if (!response.ok) {
           throw new Error("Could not fetch events.");
         } else {
@@ -32,7 +33,7 @@ export const Announcements = () => {
 
   const handleDelete = async (id) => {
     try {
-      const response = await fetch(`http://localhost:7000/announcements/${id}`, {
+      const response = await fetch(`http://${backendHost}/announcements/${id}`, {
         method: 'DELETE',
       });
 

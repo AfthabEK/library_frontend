@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { json, useRouteLoaderData ,defer} from "react-router-dom";
 import {useNavigate,useNavigation,useActionData,redirect,useParams} from 'react-router-dom';
 import {useState,useEffect} from 'react';
+import { backendHost } from '../Config';
 
 export const NewAnnouncement=(props)=>{
     const [title,setTitle]=useState("");
@@ -12,7 +13,7 @@ export const NewAnnouncement=(props)=>{
     let handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        let res = await fetch(`http://localhost:7000/announcements`, {
+        let res = await fetch(`http://${backendHost}/announcements`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

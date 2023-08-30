@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { json, useRouteLoaderData ,defer, Await } from "react-router-dom";
-
+import { backendHost } from "../Config";
 import Table from '../Components/Table';
 
 function Ebooks() {
@@ -26,7 +26,7 @@ export async function loader({ request, params }) {
 }
 
 async function loadBooks(id) {
-  const response = await fetch("http://localhost:7000/ebooks/" + id);
+  const response = await fetch(`http://${backendHost}/ebooks/` + id);
   if (!response.ok) {
     // return {isError: true, message: "Could not fetch result!"};
     // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {

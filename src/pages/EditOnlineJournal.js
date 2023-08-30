@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { json, useRouteLoaderData ,defer} from "react-router-dom";
 import {useNavigate,useNavigation,useActionData,redirect,useParams} from 'react-router-dom';
 import {useState,useEffect} from 'react';
+import { backendHost } from '../Config';
 
 export const EditOnlineJournal=(props)=>{
     const { publisher_id,journal_id} = useParams();
@@ -16,7 +17,7 @@ export const EditOnlineJournal=(props)=>{
     useEffect(() => {
         // Function to make the GET request
         const handlePublishersList= async()=>{
-            const response = await fetch("http://localhost:7000/online-publishers/" );
+            const response = await fetch(`http://${backendHost}/online-publishers/` );
             if (!response.ok) {
                 // return {isError: true, message: "Could not fetch result!"};
                 // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
@@ -37,8 +38,8 @@ export const EditOnlineJournal=(props)=>{
         }
 
         const getEditValues=async()=>{
-            console.log(`http://localhost:7000/ojournals/${publisher_id}/${journal_id}` )
-            const response = await fetch(`http://localhost:7000/ojournals/${publisher_id}/${journal_id}` );
+            console.log(`http://${backendHost}/ojournals/${publisher_id}/${journal_id}` )
+            const response = await fetch(`http://${backendHost}/ojournals/${publisher_id}/${journal_id}` );
             if (!response.ok) {
                 // return {isError: true, message: "Could not fetch result!"};
                 // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
@@ -70,7 +71,7 @@ export const EditOnlineJournal=(props)=>{
     let handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        let res = await fetch(`http://localhost:7000/ojournals/${publisher_id}/${journal_id}`, {
+        let res = await fetch(`http://${backendHost}/ojournals/${publisher_id}/${journal_id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json"

@@ -5,6 +5,7 @@ import {useNavigate,useNavigation,useActionData,redirect} from 'react-router-dom
 import { NewEbookForm } from '../Components/NewEbookForm';
 import {NewEbookExcelForm} from '../Components/NewEbookExcel';
 import {useState} from 'react';
+import { backendHost } from '../Config';
 
 export const NewEbook=(props)=>{
     const { publishers } = useRouteLoaderData("ebooks-form");
@@ -34,7 +35,7 @@ export async function loader({ request, params }) {
   }
   
   async function loadPublisher() {
-    const response = await fetch("http://localhost:7000/publishers/");
+    const response = await fetch(`http://${backendHost}/publishers/`);
     if (!response.ok) {
       // return {isError: true, message: "Could not fetch result!"};
       // throw new Response(JSON.stringify({ message: "Coulf not fetch events." }), {
